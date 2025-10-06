@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переход в Telegram-бота...</title>
+    <meta http-equiv="refresh" content="2;url=#">
+    <style>
+        body { background:#000; color:#fff; font-family: Arial, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+        .wrap { text-align:center; }
+        .wrap h1 { color:#FFD200; margin-bottom:12px; }
+        .wrap p { opacity:.85; margin-bottom:20px; }
+        .btn { display:inline-block; background:#FFD200; color:#000; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; }
+    </style>
+    <script>
+        function getParam(name){
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+            const to = getParam('to');
+            const fallback = document.getElementById('fallback');
+            if (to) {
+                // моментальный редирект
+                window.location.replace(to);
+                // обновить meta refresh для совместимости
+                const meta = document.querySelector('meta[http-equiv="refresh"]');
+                if (meta) meta.setAttribute('content', '2;url=' + to);
+                // обновить ссылку
+                fallback.href = to;
+            }
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="wrap">
+        <h1>Открываем Telegram-бота…</h1>
+        <p>Если переход не произошёл автоматически, нажмите кнопку ниже.</p>
+        <a id="fallback" class="btn" href="#">Открыть бота</a>
+    </div>
+</body>
+</html>
+
+
